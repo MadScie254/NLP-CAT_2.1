@@ -164,10 +164,15 @@ class DatasetLoader:
             
             dataset = load_dataset("ag_news", cache_dir="data/cache")
             
-            train_texts = [item['text'] for item in dataset['train']]
-            train_labels = [item['label'] for item in dataset['train']]
-            test_texts = [item['text'] for item in dataset['test']]
-            test_labels = [item['label'] for item in dataset['test']]
+            # Extract data properly from HuggingFace dataset with type safety
+            train_split = dataset['train']
+            test_split = dataset['test']
+            
+            # Convert to lists for compatibility
+            train_texts = list(train_split['text'])
+            train_labels = list(train_split['label'])
+            test_texts = list(test_split['text'])
+            test_labels = list(test_split['label'])
             
             class_names = ['World', 'Sports', 'Business', 'Sci/Tech']
             

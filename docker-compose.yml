@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  nlp-cat-app:
+    build: .
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./artifacts:/app/artifacts
+      - ./results:/app/results
+      - ./data:/app/data
+    environment:
+      - PYTHONPATH=/app
+      - TOKENIZERS_PARALLELISM=false
+    command: ["streamlit", "run", "app_streamlit.py", "--server.port=8501", "--server.address=0.0.0.0"]
+
+  jupyter:
+    build: .
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./:/app
+    working_dir: /app
+    command: ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root", "--NotebookApp.token=''"]
+
+  training:
+    build: .
+    volumes:
+      - ./artifacts:/app/artifacts
+      - ./results:/app/results
+      - ./data:/app/data
+    environment:
+      - PYTHONPATH=/app
+      - TOKENIZERS_PARALLELISM=false
+    command: ["python", "train.py", "--dataset", "ag_news", "--model", "mnb", "--sample_size", "5000"]
+    profiles:
+      - training

@@ -310,12 +310,22 @@ class ModelManager:
         
         try:
             if model in ['MultinomialNB', 'LinearSVM', 'Hybrid']:
-                # Classical/hybrid models
-                prediction = loaded_model.predict([text])[0]
+                # Classical/hybrid models - handle both pipeline and direct model objects
+                if hasattr(loaded_model, 'predict'):
+                    prediction = loaded_model.predict([text])[0]
+                elif isinstance(loaded_model, dict) and 'model' in loaded_model:
+                    prediction = loaded_model['model'].predict([text])[0]
+                else:
+                    return {'error': 'Model object invalid', 'prediction': None, 'probabilities': None, 'inference_time': 0}
                 
                 try:
-                    probabilities = loaded_model.predict_proba([text])[0]
-                except AttributeError:
+                    if hasattr(loaded_model, 'predict_proba'):
+                        probabilities = loaded_model.predict_proba([text])[0]
+                    elif isinstance(loaded_model, dict) and 'model' in loaded_model:
+                        probabilities = loaded_model['model'].predict_proba([text])[0]
+                    else:
+                        probabilities = None
+                except (AttributeError, KeyError):
                     # LinearSVM might not have predict_proba
                     probabilities = None
                 
@@ -627,14 +637,24 @@ def main():
                     col1, col2 = st.columns(2)
                     
                     with col1:
-                        text_column = st.selectbox("Text Column", df.columns, index=df.columns.get_loc('text'))
+                        # Find text column index safely
+                        try:
+                            text_idx = list(df.columns).index('text')
+                        except ValueError:
+                            text_idx = 0
+                        text_column = st.selectbox("Text Column", df.columns, index=text_idx)
                     
                     with col2:
                         has_labels = 'label' in df.columns
                         if has_labels:
+                            # Find label column index safely
+                            try:
+                                label_idx = list(df.columns).index('label') + 1
+                            except ValueError:
+                                label_idx = 0
                             label_column = st.selectbox("Label Column (optional)", 
                                                        ['None'] + list(df.columns), 
-                                                       index=df.columns.get_loc('label') + 1 if has_labels else 0)
+                                                       index=label_idx)
                         else:
                             label_column = st.selectbox("Label Column (optional)", ['None'])
                     
@@ -882,7 +902,8 @@ def main():
         
         with col1:
             st.write("**Environment:**")
-            st.write(f"- Python: {os.sys.version.split()[0]}")
+            import sys
+            st.write(f"- Python: {sys.version.split()[0]}")
             st.write(f"- Streamlit: {st.__version__}")
             st.write(f"- PyTorch Available: {'✅' if 'torch' in globals() else '❌'}")
             st.write(f"- Transformers Available: {'✅' if TRANSFORMERS_AVAILABLE else '❌'}")

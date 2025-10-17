@@ -1,0 +1,40 @@
+{
+  "generated_at": "2025-10-17T19:32:24.024398",
+  "python_version": "3.11.13 | packaged by Anaconda, Inc. | (main, Jun  5 2025, 13:03:15) [MSC v.1929 64 bit (AMD64)]",
+  "random_seed": 42,
+  "datasets": {
+    "AG_News": {
+      "name": "AG_News",
+      "source": "https://huggingface.co/datasets/ag_news",
+      "license": "Apache License 2.0",
+      "classes": 4,
+      "train_size": 120000,
+      "test_size": 7600,
+      "avg_length": 37.84,
+      "md5_hash": "78173ece1b1e9c48d14163ce68e8fe97",
+      "load_time": 18.18934917449951
+    },
+    "20_Newsgroups": {
+      "name": "20_Newsgroups",
+      "source": "sklearn.datasets.fetch_20newsgroups",
+      "license": "Public Domain",
+      "classes": 20,
+      "train_size": 11314,
+      "test_size": 7532,
+      "avg_length": 181.6377480632495,
+      "md5_hash": "d17c8fd151e91a77683c00c3a669c674",
+      "load_time": 2.9438769817352295
+    },
+    "IMDb": {
+      "name": "IMDb",
+      "source": "https://huggingface.co/datasets/imdb",
+      "license": "Apache License 2.0",
+      "classes": 2,
+      "train_size": 25000,
+      "test_size": 25000,
+      "avg_length": 231.15694,
+      "md5_hash": "fd2b0cffb087cb198cd02358d247d458",
+      "load_time": 15.940824747085571
+    }
+  }
+}
