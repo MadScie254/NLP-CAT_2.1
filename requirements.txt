@@ -1,0 +1,159 @@
+# NLP Comparative Analysis Toolkit (NLP-CAT) 2.1 - Requirements
+# Exact package versions for Python 3.11.13 reproducibility
+# Author: Daniel Wanjala Machimbo
+# Institution: The Cooperative University of Kenya
+# Date: October 2025
+
+# Core Scientific Computing
+numpy==1.24.3
+pandas==2.0.3
+scipy==1.11.1
+matplotlib==3.7.2
+seaborn==0.12.2
+plotly==5.15.0
+
+# Machine Learning - Core
+scikit-learn==1.3.0
+joblib==1.3.1
+
+# Natural Language Processing
+nltk==3.8.1
+spacy==3.6.1
+
+# Deep Learning - PyTorch Ecosystem
+torch==2.0.1
+torchaudio==2.0.2
+torchvision==0.15.2
+
+# Transformers and Datasets
+transformers==4.33.2
+datasets==2.14.4
+tokenizers==0.13.3
+accelerate==0.21.0
+
+# Web Application - Streamlit
+streamlit==1.25.0
+streamlit-option-menu==0.3.6
+
+# Progress Tracking and Utilities
+tqdm==4.65.0
+rich==13.5.2
+
+# Configuration and Serialization
+pyyaml==6.0.1
+toml==0.10.2
+configargparse==1.7
+
+# Statistical Analysis
+statsmodels==0.14.0
+pingouin==0.5.3
+
+# Calibration and Model Analysis
+netcal==1.3.5
+
+# Interpretability (Optional - for advanced features)
+lime==0.2.0.1
+shap==0.42.1
+
+# System and Hardware Monitoring
+psutil==5.9.5
+gpustat==1.1.1
+
+# Jupyter Notebook Support
+jupyter==1.0.0
+notebook==7.0.2
+ipywidgets==8.0.7
+papermill==2.4.0
+
+# Testing and Quality Assurance
+pytest==7.4.0
+pytest-cov==4.1.0
+black==23.7.0
+flake8==6.0.0
+
+# Documentation
+sphinx==7.1.2
+sphinx-rtd-theme==1.3.0
+
+# Development Utilities
+pre-commit==3.3.3
+mypy==1.5.1
+
+# Memory and Performance Optimization
+memory-profiler==0.60.0
+line-profiler==4.1.1
+
+# Additional NLP Libraries (Optional)
+wordcloud==1.9.2
+textstat==0.7.3
+
+# Data Visualization Extensions  
+bokeh==3.2.1
+altair==5.0.1
+
+# Caching and Persistence
+diskcache==5.6.3
+pickle5==0.0.12
+
+# Networking and Downloads
+requests==2.31.0
+urllib3==2.0.4
+
+# File Format Support
+openpyxl==3.1.2
+xlsxwriter==3.1.2
+
+# Environment and Platform Detection
+distro==1.8.0
+platform-machine==0.0.3
+
+# Optional: Enhanced Terminal and CLI
+click==8.1.7
+colorama==0.4.6
+termcolor==2.3.0
+
+# Optional: Advanced Visualization
+umap-learn==0.5.3
+plotnine==0.12.2
+
+# Version and Dependency Management
+pip-tools==7.1.0
+pipdeptree==2.13.0
+
+# Optional: GPU Memory Management (if CUDA available)
+# nvidia-ml-py3==7.352.0
+
+# Package Information:
+# Generated for Python 3.11.13 on Windows 11
+# Total packages: ~60 core dependencies + optional packages
+# Estimated installation size: ~2-3 GB
+# 
+# Installation Instructions:
+# 1. Create virtual environment:
+#    python -m venv nlp_cat_env
+#    
+# 2. Activate environment:
+#    Windows: nlp_cat_env\Scripts\activate
+#    Unix/macOS: source nlp_cat_env/bin/activate
+#    
+# 3. Upgrade pip:
+#    python -m pip install --upgrade pip
+#    
+# 4. Install requirements:
+#    pip install -r requirements.txt
+#    
+# 5. Install spaCy language model:
+#    python -m spacy download en_core_web_sm
+#    
+# 6. Download NLTK data:
+#    python -c "import nltk; nltk.download('punkt'); nltk.download('stopwords'); nltk.download('wordnet')"
+#
+# GPU Support (Optional):
+# For CUDA 11.8 support, use:
+#    pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+#
+# For CPU-only installation:
+#    pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+#
+# Verification:
+# Run: python -c "import torch; print(f'PyTorch: {torch.__version__}'); print(f'CUDA available: {torch.cuda.is_available()}')"
