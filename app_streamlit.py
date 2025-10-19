@@ -92,137 +92,363 @@ except ImportError:
 
 # Configure Streamlit page
 st.set_page_config(
-    page_title="NLP-CAT 2.1 Dashboard",
-    page_icon="🔬",
+    page_title="🚀 NLP-CAT 2.1 GENIUS DASHBOARD",
+    page_icon="🧠",
     layout="wide",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="expanded",
+    menu_items={
+        'Get Help': 'https://github.com/danielwanjala/nlp-cat',
+        'Report a bug': "https://github.com/danielwanjala/nlp-cat/issues",
+        'About': "# NLP-CAT 2.1 Genius Dashboard\nUltra-advanced AI-powered text analysis platform"
+    }
 )
 
-# Custom CSS for React-level styling
+# 🎨 ENHANCED CUSTOM CSS FOR GENIUS-LEVEL STYLING
 st.markdown("""
 <style>
-    /* Main container styling */
-    .main .block-container {
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-        max-width: 95%;
+    /* Import Google Fonts for professional typography */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+    
+    /* Global styling */
+    html, body, [class*="css"] {
+        font-family: 'Inter', sans-serif;
     }
     
-    /* Custom metric cards */
-    .metric-card {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        padding: 1.5rem;
-        border-radius: 10px;
+    /* Main container styling with glass morphism */
+    .main .block-container {
+        padding-top: 1rem;
+        padding-bottom: 2rem;
+        max-width: 98%;
+        background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,0.2);
+    }
+    
+    /* Animated gradient background */
+    .main {
+        background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+        background-size: 400% 400%;
+        animation: gradientShift 15s ease infinite;
+    }
+    
+    @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    
+    /* 🔥 GENIUS METRIC CARDS WITH ANIMATIONS */
+    .genius-metric-card {
+        background: linear-gradient(135deg, 
+            rgba(102, 126, 234, 0.9) 0%, 
+            rgba(118, 75, 162, 0.9) 50%,
+            rgba(240, 147, 251, 0.9) 100%);
+        padding: 2rem;
+        border-radius: 20px;
         color: white;
         text-align: center;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        margin-bottom: 1rem;
+        box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+        margin-bottom: 1.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .genius-metric-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: left 0.5s;
+    }
+    
+    .genius-metric-card:hover::before {
+        left: 100%;
+    }
+    
+    .genius-metric-card:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 16px 40px rgba(102, 126, 234, 0.4);
     }
     
     .metric-value {
-        font-size: 2.5rem;
-        font-weight: bold;
+        font-size: 3rem;
+        font-weight: 700;
         margin: 0.5rem 0;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        font-family: 'JetBrains Mono', monospace;
     }
     
     .metric-label {
-        font-size: 0.9rem;
-        opacity: 0.9;
+        font-size: 1rem;
+        opacity: 0.95;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 2px;
+        font-weight: 500;
     }
     
-    /* Sidebar styling */
-    .css-1d391kg {
-        background-color: #f8fafc;
+    .metric-trend {
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+        opacity: 0.8;
     }
     
-    /* Button styling */
+    /* 🚀 PERFORMANCE RACING DASHBOARD */
+    .racing-dashboard {
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        border-radius: 15px;
+        padding: 2rem;
+        margin: 1rem 0;
+        color: white;
+        box-shadow: 0 10px 30px rgba(30, 60, 114, 0.3);
+    }
+    
+    .model-race-track {
+        background: linear-gradient(90deg, #ff6b6b 0%, #feca57 50%, #48dbfb 100%);
+        height: 8px;
+        border-radius: 4px;
+        margin: 0.5rem 0;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .race-car {
+        position: absolute;
+        width: 20px;
+        height: 8px;
+        background: #fff;
+        border-radius: 50%;
+        animation: racing 2s linear infinite;
+    }
+    
+    @keyframes racing {
+        0% { left: 0%; }
+        100% { left: 100%; }
+    }
+    
+    /* 🧠 AI INSIGHTS PANEL */
+    .ai-insights {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 20px;
+        padding: 2rem;
+        color: white;
+        margin: 1rem 0;
+        border-left: 5px solid #f093fb;
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        position: relative;
+    }
+    
+    .ai-insights::before {
+        content: '🧠';
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        font-size: 2rem;
+        animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+        0% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.7; transform: scale(1.1); }
+        100% { opacity: 1; transform: scale(1); }
+    }
+    
+    /* 📊 ADVANCED CHART CONTAINERS */
+    .chart-container {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 2rem;
+        margin: 1rem 0;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* 🎨 ENHANCED BUTTONS */
     .stButton > button {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         color: white;
         border-radius: 25px;
         border: none;
-        padding: 0.5rem 2rem;
+        padding: 0.75rem 2rem;
         font-weight: 600;
-        transition: all 0.3s ease;
+        font-size: 1rem;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        position: relative;
+        overflow: hidden;
     }
     
     .stButton > button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
     }
     
-    /* Success/Warning/Error styling */
-    .stSuccess {
-        background-color: #d4edda;
-        border-color: #c3e6cb;
-        color: #155724;
+    .stButton > button:active {
+        transform: translateY(-1px);
     }
     
-    .stWarning {
-        background-color: #fff3cd;
-        border-color: #ffeaa7;
-        color: #856404;
+    /* 🌟 SIDEBAR ENHANCEMENTS */
+    .css-1d391kg {
+        background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+        border-right: 2px solid rgba(102, 126, 234, 0.2);
     }
     
-    .stError {
-        background-color: #f8d7da;
-        border-color: #f5c6cb;
-        color: #721c24;
-    }
-    
-    /* Card-like containers */
-    .analysis-card {
-        background: white;
-        padding: 2rem;
-        border-radius: 15px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        margin: 1rem 0;
-        border-left: 4px solid #667eea;
-    }
-    
-    /* Progress bars */
+    /* 📈 PROGRESS BARS WITH GLOW */
     .stProgress .st-bo {
-        background-color: #667eea;
+        background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
     }
     
-    /* Tables */
-    .dataframe {
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    /* 🎭 TEXT ANALYSIS CARDS */
+    .text-analysis-card {
+        background: linear-gradient(135deg, 
+            rgba(240, 147, 251, 0.1) 0%, 
+            rgba(245, 87, 108, 0.1) 100%);
+        backdrop-filter: blur(15px);
+        border-radius: 20px;
+        padding: 2rem;
+        margin: 1rem 0;
+        border: 1px solid rgba(240, 147, 251, 0.3);
+        box-shadow: 0 8px 32px rgba(240, 147, 251, 0.2);
     }
     
-    /* Header gradient */
-    .main-header {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    /* 🔥 REAL-TIME MONITORING */
+    .monitoring-panel {
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        border-radius: 15px;
+        padding: 1.5rem;
+        color: white;
+        margin: 0.5rem 0;
+        border-left: 4px solid #48dbfb;
+    }
+    
+    /* ⚡ PERFORMANCE INDICATORS */
+    .perf-indicator {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 8px;
+        animation: blink 1.5s infinite;
+    }
+    
+    .perf-excellent { background: #48dbfb; }
+    .perf-good { background: #feca57; }
+    .perf-warning { background: #ff6b6b; }
+    
+    @keyframes blink {
+        0%, 50% { opacity: 1; }
+        51%, 100% { opacity: 0.3; }
+    }
+    
+    /* 💫 LOADING ANIMATIONS */
+    .genius-loader {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 3px solid rgba(102, 126, 234, 0.3);
+        border-radius: 50%;
+        border-top-color: #667eea;
+        animation: spin 1s ease-in-out infinite;
+    }
+    
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+    
+    /* 🎨 GRADIENT TEXT */
+    .gradient-text {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        font-size: 3rem;
-        font-weight: bold;
+        background-clip: text;
+        font-weight: 700;
+        font-size: 3.5rem;
         text-align: center;
-        margin-bottom: 2rem;
+        margin: 2rem 0;
+        animation: shimmer 3s ease-in-out infinite;
+    }
+    
+    @keyframes shimmer {
+        0% { background-position: -200% center; }
+        100% { background-position: 200% center; }
+    }
+    
+    /* 🌈 RAINBOW BORDERS */
+    .rainbow-border {
+        border: 2px solid transparent;
+        border-radius: 15px;
+        background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3, #54a0ff) border-box;
+        background-clip: padding-box;
+    }
+    
+    /* 📱 RESPONSIVE DESIGN */
+    @media (max-width: 768px) {
+        .metric-value { font-size: 2rem; }
+        .gradient-text { font-size: 2.5rem; }
+        .genius-metric-card { padding: 1.5rem; }
+    }
+    
+    /* 🎯 TOOLTIPS */
+    .tooltip {
+        position: relative;
+        cursor: help;
+    }
+    
+    .tooltip::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        bottom: 125%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.9);
+        color: white;
+        padding: 0.5rem;
+        border-radius: 5px;
+        font-size: 0.8rem;
+        white-space: nowrap;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s;
+    }
+    
+    .tooltip:hover::after {
+        opacity: 1;
+        visibility: visible;
     }
 </style>
 """, unsafe_allow_html=True)
 
-# Configuration and Constants
+# 🚀 ENHANCED CONFIGURATION AND CONSTANTS
 DATASETS = {
     'AG News': {
         'classes': ['World', 'Sports', 'Business', 'Sci/Tech'],
         'description': '4-class news categorization',
-        'max_length': 128
+        'max_length': 128,
+        'emoji': '📰',
+        'color': '#667eea'
     },
     '20 Newsgroups': {
         'classes': [f'Class_{i}' for i in range(20)],
         'description': '20-class discussion forum classification', 
-        'max_length': 256
+        'max_length': 256,
+        'emoji': '💬',
+        'color': '#764ba2'
     },
     'IMDb': {
         'classes': ['Negative', 'Positive'],
         'description': 'Binary sentiment analysis',
-        'max_length': 512
+        'max_length': 512,
+        'emoji': '🎬',
+        'color': '#f093fb'
     }
 }
 
@@ -230,29 +456,380 @@ MODELS = {
     'MultinomialNB': {
         'type': 'classical',
         'description': 'Multinomial Naive Bayes with TF-IDF features',
-        'complexity': 'Low'
+        'complexity': 'Low',
+        'emoji': '📊',
+        'color': '#48dbfb',
+        'speed': 'Very Fast',
+        'memory': 'Low'
     },
     'LinearSVM': {
         'type': 'classical', 
         'description': 'Linear Support Vector Machine with TF-IDF features',
-        'complexity': 'Low'
+        'complexity': 'Low',
+        'emoji': '⚡',
+        'color': '#feca57',
+        'speed': 'Fast',
+        'memory': 'Low'
     },
     'BiLSTM': {
         'type': 'neural',
         'description': 'Bidirectional LSTM with GloVe embeddings',
-        'complexity': 'Medium'
+        'complexity': 'Medium',
+        'emoji': '🧠',
+        'color': '#ff6b6b',
+        'speed': 'Medium',
+        'memory': 'Medium'
     },
     'BERT': {
         'type': 'transformer',
         'description': 'BERT-base-uncased fine-tuned',
-        'complexity': 'High'
+        'complexity': 'High',
+        'emoji': '🤖',
+        'color': '#54a0ff',
+        'speed': 'Slow',
+        'memory': 'High'
     },
     'Hybrid': {
         'type': 'hybrid',
         'description': 'BERT embeddings + Linear SVM classifier',
-        'complexity': 'Medium'
+        'complexity': 'Medium',
+        'emoji': '🔥',
+        'color': '#ff9ff3',
+        'speed': 'Medium-Fast',
+        'memory': 'Medium'
     }
 }
+
+# 🎨 GENIUS ANALYTICS CLASSES
+class GeniusTextAnalyzer:
+    """🧠 Advanced text analysis with emotion, complexity, and style detection"""
+    
+    def __init__(self):
+        self.sentiment_analyzer = None
+        self.emotion_pipeline = None
+        self._init_analyzers()
+    
+    def _init_analyzers(self):
+        """Initialize sentiment and emotion analyzers"""
+        try:
+            if SENTIMENT_AVAILABLE:
+                self.sentiment_analyzer = SentimentIntensityAnalyzer()
+        except:
+            pass
+            
+        try:
+            if TRANSFORMERS_AVAILABLE:
+                self.emotion_pipeline = pipeline(
+                    "text-classification",
+                    model="j-hartmann/emotion-english-distilroberta-base",
+                    device=0 if torch.cuda.is_available() else -1
+                )
+        except:
+            pass
+    
+    def analyze_text_complexity(self, text: str) -> Dict[str, Any]:
+        """Analyze text complexity and readability"""
+        try:
+            # Basic metrics
+            word_count = len(text.split())
+            char_count = len(text)
+            sentence_count = len(re.split(r'[.!?]+', text))
+            
+            # Readability scores
+            flesch_score = flesch_reading_ease(text) if word_count > 0 else 0
+            fk_grade = flesch_kincaid_grade(text) if word_count > 0 else 0
+            
+            # Advanced metrics
+            avg_word_length = np.mean([len(word) for word in text.split()]) if word_count > 0 else 0
+            avg_sentence_length = word_count / sentence_count if sentence_count > 0 else 0
+            
+            # Complexity classification
+            if flesch_score >= 90:
+                complexity_level = "Very Easy"
+                complexity_color = "#48dbfb"
+            elif flesch_score >= 80:
+                complexity_level = "Easy"
+                complexity_color = "#feca57"
+            elif flesch_score >= 70:
+                complexity_level = "Fairly Easy"
+                complexity_color = "#ff9ff3"
+            elif flesch_score >= 60:
+                complexity_level = "Standard"
+                complexity_color = "#667eea"
+            elif flesch_score >= 50:
+                complexity_level = "Fairly Difficult"
+                complexity_color = "#ff6b6b"
+            else:
+                complexity_level = "Difficult"
+                complexity_color = "#764ba2"
+            
+            return {
+                'word_count': word_count,
+                'char_count': char_count,
+                'sentence_count': sentence_count,
+                'flesch_score': flesch_score,
+                'fk_grade': fk_grade,
+                'avg_word_length': avg_word_length,
+                'avg_sentence_length': avg_sentence_length,
+                'complexity_level': complexity_level,
+                'complexity_color': complexity_color
+            }
+        except:
+            return {
+                'word_count': 0, 'char_count': 0, 'sentence_count': 0,
+                'flesch_score': 0, 'fk_grade': 0, 'avg_word_length': 0,
+                'avg_sentence_length': 0, 'complexity_level': 'Unknown',
+                'complexity_color': '#667eea'
+            }
+    
+    def analyze_sentiment_emotion(self, text: str) -> Dict[str, Any]:
+        """Analyze sentiment and emotions in text"""
+        results = {
+            'sentiment': {'compound': 0, 'pos': 0, 'neu': 0, 'neg': 0},
+            'emotions': [],
+            'dominant_emotion': 'neutral',
+            'emotion_confidence': 0.0
+        }
+        
+        try:
+            # VADER sentiment analysis
+            if self.sentiment_analyzer:
+                sentiment_scores = self.sentiment_analyzer.polarity_scores(text)
+                results['sentiment'] = sentiment_scores
+            
+            # Emotion analysis
+            if self.emotion_pipeline:
+                emotion_results = self.emotion_pipeline(text[:512])  # Limit text length
+                results['emotions'] = emotion_results
+                if emotion_results:
+                    best_emotion = max(emotion_results, key=lambda x: x['score'])
+                    results['dominant_emotion'] = best_emotion['label']
+                    results['emotion_confidence'] = best_emotion['score']
+        except:
+            pass
+        
+        return results
+    
+    def analyze_text_style(self, text: str) -> Dict[str, Any]:
+        """Analyze text style and linguistic features"""
+        try:
+            # Punctuation analysis
+            punctuation_count = sum(1 for char in text if char in '.,!?;:')
+            punctuation_ratio = punctuation_count / len(text) if len(text) > 0 else 0
+            
+            # Capital letters
+            caps_count = sum(1 for char in text if char.isupper())
+            caps_ratio = caps_count / len(text) if len(text) > 0 else 0
+            
+            # Numbers
+            numbers_count = sum(1 for char in text if char.isdigit())
+            numbers_ratio = numbers_count / len(text) if len(text) > 0 else 0
+            
+            # Emoji detection
+            emoji_count = 0
+            if EMOJI_AVAILABLE:
+                emoji_count = sum(1 for char in text if char in emoji.UNICODE_EMOJI['en'])
+            
+            # Determine style
+            if caps_ratio > 0.1:
+                style = "Emphatic"
+                style_color = "#ff6b6b"
+            elif punctuation_ratio > 0.05:
+                style = "Expressive"
+                style_color = "#feca57"
+            elif emoji_count > 0:
+                style = "Casual"
+                style_color = "#48dbfb"
+            elif numbers_ratio > 0.02:
+                style = "Technical"
+                style_color = "#54a0ff"
+            else:
+                style = "Formal"
+                style_color = "#667eea"
+            
+            return {
+                'punctuation_ratio': punctuation_ratio,
+                'caps_ratio': caps_ratio,
+                'numbers_ratio': numbers_ratio,
+                'emoji_count': emoji_count,
+                'style': style,
+                'style_color': style_color
+            }
+        except:
+            return {
+                'punctuation_ratio': 0, 'caps_ratio': 0, 'numbers_ratio': 0,
+                'emoji_count': 0, 'style': 'Unknown', 'style_color': '#667eea'
+            }
+
+class PerformanceMonitor:
+    """⚡ Real-time performance monitoring and resource tracking"""
+    
+    def __init__(self):
+        self.start_time = time.time()
+        self.metrics_history = []
+    
+    def get_system_metrics(self) -> Dict[str, Any]:
+        """Get current system performance metrics"""
+        try:
+            cpu_percent = psutil.cpu_percent(interval=0.1)
+            memory = psutil.virtual_memory()
+            
+            return {
+                'cpu_percent': cpu_percent,
+                'memory_percent': memory.percent,
+                'memory_available': memory.available / (1024**3),  # GB
+                'memory_total': memory.total / (1024**3),  # GB
+                'uptime': time.time() - self.start_time
+            }
+        except:
+            return {
+                'cpu_percent': 0, 'memory_percent': 0,
+                'memory_available': 0, 'memory_total': 0, 'uptime': 0
+            }
+    
+    def track_prediction_time(self, model_name: str, prediction_time: float):
+        """Track prediction timing for performance analysis"""
+        self.metrics_history.append({
+            'model': model_name,
+            'time': prediction_time,
+            'timestamp': datetime.now()
+        })
+        
+        # Keep only last 100 predictions
+        if len(self.metrics_history) > 100:
+            self.metrics_history = self.metrics_history[-100:]
+    
+    def get_model_performance_stats(self) -> Dict[str, Any]:
+        """Get aggregated performance statistics"""
+        if not self.metrics_history:
+            return {}
+        
+        df = pd.DataFrame(self.metrics_history)
+        stats = {}
+        
+        for model in df['model'].unique():
+            model_data = df[df['model'] == model]['time']
+            stats[model] = {
+                'avg_time': model_data.mean(),
+                'min_time': model_data.min(),
+                'max_time': model_data.max(),
+                'std_time': model_data.std(),
+                'prediction_count': len(model_data)
+            }
+        
+        return stats
+
+class ModelRacingDashboard:
+    """🏁 Real-time model performance racing dashboard"""
+    
+    def __init__(self):
+        self.race_data = {}
+        self.race_active = False
+    
+    def start_race(self, models: List[str]):
+        """Start a new model racing session"""
+        self.race_data = {model: {'position': 0, 'speed': 0, 'lap_times': []} for model in models}
+        self.race_active = True
+    
+    def update_race_position(self, model: str, performance_score: float, prediction_time: float):
+        """Update model position in the race based on performance"""
+        if model in self.race_data:
+            # Calculate position based on accuracy and speed
+            speed_score = max(0, 100 - prediction_time * 100)  # Faster = higher score
+            overall_score = (performance_score * 0.7) + (speed_score * 0.3)
+            
+            self.race_data[model]['position'] = overall_score
+            self.race_data[model]['speed'] = speed_score
+            self.race_data[model]['lap_times'].append(prediction_time)
+    
+    def get_race_standings(self) -> List[Tuple[str, float]]:
+        """Get current race standings"""
+        standings = [(model, data['position']) for model, data in self.race_data.items()]
+        return sorted(standings, key=lambda x: x[1], reverse=True)
+
+class InsightsEngine:
+    """💡 AI-powered insights and recommendations generator"""
+    
+    def __init__(self):
+        self.insights_cache = {}
+    
+    def generate_model_recommendation(self, text: str, text_analysis: Dict) -> Dict[str, Any]:
+        """Generate intelligent model recommendations based on text characteristics"""
+        
+        recommendations = []
+        
+        # Based on text complexity
+        complexity = text_analysis.get('complexity_level', 'Standard')
+        word_count = text_analysis.get('word_count', 0)
+        
+        if complexity in ['Very Easy', 'Easy'] and word_count < 50:
+            recommendations.append({
+                'model': 'MultinomialNB',
+                'reason': 'Simple text with low complexity - Naive Bayes is efficient and accurate',
+                'confidence': 0.9
+            })
+        elif word_count > 200:
+            recommendations.append({
+                'model': 'BERT',
+                'reason': 'Long, complex text benefits from transformer attention mechanisms',
+                'confidence': 0.85
+            })
+        elif complexity == 'Standard':
+            recommendations.append({
+                'model': 'Hybrid',
+                'reason': 'Balanced complexity - hybrid approach offers best performance/speed trade-off',
+                'confidence': 0.8
+            })
+        
+        # Based on text style
+        style = text_analysis.get('style', 'Formal')
+        if style in ['Casual', 'Expressive']:
+            recommendations.append({
+                'model': 'BiLSTM',
+                'reason': 'Casual/expressive text benefits from sequential understanding',
+                'confidence': 0.75
+            })
+        
+        # Sort by confidence
+        recommendations.sort(key=lambda x: x['confidence'], reverse=True)
+        
+        return {
+            'primary_recommendation': recommendations[0] if recommendations else {
+                'model': 'LinearSVM', 'reason': 'General-purpose classifier', 'confidence': 0.6
+            },
+            'all_recommendations': recommendations[:3]  # Top 3
+        }
+    
+    def generate_text_insights(self, text: str, predictions: Dict) -> List[str]:
+        """Generate insights about the text and predictions"""
+        
+        insights = []
+        
+        # Confidence insights
+        if predictions:
+            confidences = [pred.get('confidence', 0) for pred in predictions.values()]
+            avg_confidence = np.mean(confidences)
+            
+            if avg_confidence > 0.9:
+                insights.append("🎯 High prediction confidence across all models - text has clear classification signals")
+            elif avg_confidence < 0.6:
+                insights.append("⚠️ Low prediction confidence - text may be ambiguous or require more context")
+            
+            # Agreement analysis
+            predicted_classes = [pred.get('predicted_class', '') for pred in predictions.values()]
+            if len(set(predicted_classes)) == 1:
+                insights.append("✅ All models agree on classification - high reliability")
+            else:
+                insights.append("🤔 Models disagree on classification - consider ensemble approach")
+        
+        # Text length insights
+        word_count = len(text.split())
+        if word_count < 10:
+            insights.append("📝 Very short text - might benefit from more context for better accuracy")
+        elif word_count > 500:
+            insights.append("📚 Long text detected - transformer models may perform better")
+        
+        return insights
 
 class ModelManager:
     """Centralized model management and prediction interface"""
