@@ -42,8 +42,17 @@ import json
 import os
 import time
 import re
+import psutil  # For system monitoring
+import threading
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Any
+from datetime import datetime, timedelta
+import hashlib
+import seaborn as sns
+import matplotlib.pyplot as plt
+from textstat import flesch_reading_ease, flesch_kincaid_grade  # Text complexity
+from collections import Counter
+from wordcloud import WordCloud  # For word clouds
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -51,6 +60,7 @@ warnings.filterwarnings('ignore')
 try:
     import torch
     from transformers import AutoTokenizer, AutoModelForSequenceClassification
+    from transformers import pipeline  # For emotion analysis
     TRANSFORMERS_AVAILABLE = True
 except ImportError:
     TRANSFORMERS_AVAILABLE = False
@@ -59,10 +69,26 @@ except ImportError:
 try:
     from sklearn.feature_extraction.text import TfidfVectorizer
     from sklearn.calibration import CalibratedClassifierCV
+    from sklearn.metrics import confusion_matrix, classification_report
     SKLEARN_AVAILABLE = True
 except ImportError:
     SKLEARN_AVAILABLE = False
     st.error("Scikit-learn not available - Classical models will not be functional")
+
+# Advanced emotion analysis
+try:
+    import vaderSentiment
+    from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+    SENTIMENT_AVAILABLE = True
+except ImportError:
+    SENTIMENT_AVAILABLE = False
+    st.info("Installing VADER sentiment for advanced text analysis...")
+    
+try:
+    import emoji  # For emoji analysis
+    EMOJI_AVAILABLE = True
+except ImportError:
+    EMOJI_AVAILABLE = False
 
 # Configure Streamlit page
 st.set_page_config(
