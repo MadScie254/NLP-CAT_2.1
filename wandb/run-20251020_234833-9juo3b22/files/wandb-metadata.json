@@ -1,0 +1,38 @@
+{
+  "os": "Windows-10-10.0.26200-SP0",
+  "python": "CPython 3.11.13",
+  "startedAt": "2025-10-20T20:48:33.755591Z",
+  "program": "Documents/GitHub/NLP-CAT_2.1/NLP_CAT_comparative_study.ipynb",
+  "git": {
+    "remote": "https://github.com/MadScie254/NLP-CAT_2.1.git",
+    "commit": "0667e127bb5a14eb170c5ef596ff32caf8fd40fc"
+  },
+  "email": "dmwanjala254@gmail.com",
+  "root": "C:\\Users\\MadScie254\\Documents\\GitHub\\NLP-CAT_2.1",
+  "host": "HP-OMENX",
+  "executable": "C:\\Users\\MadScie254\\anaconda3\\envs\\ml_env\\python.exe",
+  "cpu_count": 6,
+  "cpu_count_logical": 12,
+  "gpu": "Quadro P2000",
+  "gpu_count": 1,
+  "disk": {
+    "/": {
+      "total": "510812745728",
+      "used": "422017781760"
+    }
+  },
+  "memory": {
+    "total": "16976543744"
+  },
+  "gpu_nvidia": [
+    {
+      "name": "Quadro P2000",
+      "memoryTotal": "4294967296",
+      "cudaCores": 768,
+      "architecture": "Pascal",
+      "uuid": "GPU-546ebd66-727d-f0ee-f6ce-90852ef4dfdd"
+    }
+  ],
+  "cudaVersion": "13.0",
+  "writerId": "jfxywhx7oa7atyu5h1d1dw1dm2qk2ohm"
+}
